@@ -23,6 +23,6 @@ public class Ruby extends Gem{
     }
 
     public String toString() {
-        return name + "(clarity - " + clarity + "): " + weight + " - " + getPrice();
+        return name + "(clarity - " + clarity + "): " + weight + " carat - " + getPrice() + " USD";
     }
 }

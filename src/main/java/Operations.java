@@ -44,7 +44,7 @@ abstract class Operations {
 
         for (int i = 0; i < necklace.size(); i++) {
             BigDecimal weight = new BigDecimal(necklace.get(i).getWeight());
-            allStonesWeight = allStonesWeight.add(weight).setScale(1, RoundingMode.HALF_UP);
+            allStonesWeight = allStonesWeight.add(weight).setScale(2, RoundingMode.HALF_UP);
             allStonesPrice = allStonesPrice.add(necklace.get(i).getPrice()).setScale(2,RoundingMode.HALF_UP);
         }
         System.out.println("price - "+allStonesPrice+" $");
@@ -84,7 +84,7 @@ abstract class Operations {
 
     public static double generateWeight() {
         double a = new BigDecimal((Math.random()*50)+0.01).
-                setScale(3,RoundingMode.HALF_DOWN).doubleValue();
+                setScale(1,RoundingMode.HALF_DOWN).doubleValue();
         return a;
     }
 
