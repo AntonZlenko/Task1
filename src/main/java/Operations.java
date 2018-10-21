@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 abstract class Operations {
 
-    //Метод для подбора камней для ожерелья(в центре блилиант, по бокам 2 корунда и еще 4 аквамарина
+    //В ожерелье добавляем 1 Алмаз, 2 Изумруда и 4 рубина
     public static ArrayList<Gem> Selections(ArrayList<Gem> dateBase) {
         ArrayList <Gem> forNecklace = new ArrayList<Gem>();
         System.out.println("Gems for necklace"+"\n");
@@ -13,9 +13,9 @@ abstract class Operations {
         int numOfRubies = 0;
 
         for (int i = 0; i < dateBase.size(); i++) {
-            //Подбираем алмаз с 20...21 каратами и добавляем в ArrayList Gems
+
             if(dateBase.get(i).getName().equals("Diamond") &&
-                    compareWeight(dateBase.get(i).getWeight(),20,21) &&
+                    compareWeight(dateBase.get(i).getWeight(),19,21) &&
                     numOfDiamonds < 1) {
                 forNecklace.add(dateBase.get(i));
                 numOfDiamonds++;
@@ -35,22 +35,23 @@ abstract class Operations {
         }
         return forNecklace;
     }
-    //Метод выводит общую цену и вес ожерелья
-    public static void getWeightAndPriceNechlace(ArrayList<Gem> necklace) {
+
+    public static void getWeightAndPriceNecklace(ArrayList<Gem> necklace) {
+
+        System.out.println("\n" + "Total:"+"\n");
         BigDecimal allStonesWeight = new BigDecimal(0);
         BigDecimal allStonesPrice = new BigDecimal(0);
 
         for (int i = 0; i < necklace.size(); i++) {
             BigDecimal weight = new BigDecimal(necklace.get(i).getWeight());
-            allStonesWeight = allStonesWeight.add(weight).setScale(3, RoundingMode.HALF_UP);
-            allStonesPrice = allStonesPrice.add(necklace.get(i).getPrice()).setScale(3,RoundingMode.HALF_UP);
+            allStonesWeight = allStonesWeight.add(weight).setScale(1, RoundingMode.HALF_UP);
+            allStonesPrice = allStonesPrice.add(necklace.get(i).getPrice()).setScale(2,RoundingMode.HALF_UP);
         }
-
-        System.out.println("Total price "+allStonesPrice+" $");
-        System.out.println("Total weight "+allStonesWeight+" carats");
+        System.out.println("price - "+allStonesPrice+" $");
+        System.out.println("weight - "+allStonesWeight+" carats");
         System.out.println();
     }
-    //Метод сортирует камни по цене(сверху дорогие, снизу дешевые)
+
     public static void sortByPrice(ArrayList<Gem> necklace) {
         System.out.println("Sort by price"+"\n");
         for (int i = 0; i < necklace.size(); i++) {
@@ -65,7 +66,7 @@ abstract class Operations {
             }
         }
     }
-    //Метод выводит в консоль камни с которые "попадают" в заданный диапазон
+
     public static void showGemsInRanges(ArrayList<Gem> necklace,double rangeDoun,double rangeUp) {
         System.out.println("Gems in refraction rage"+"\n");
         int num = 0;
@@ -80,13 +81,13 @@ abstract class Operations {
             System.out.println("Gems not found");
         }
     }
-    //Метод генерирует вес
+
     public static double generateWeight() {
         double a = new BigDecimal((Math.random()*50)+0.01).
                 setScale(3,RoundingMode.HALF_DOWN).doubleValue();
         return a;
     }
-    //Метод для проверки попадает ли вес в "рамки"
+
     public static boolean compareWeight (double weight, double rangeDoun,
                                          double rangeUp) {
         if(weight > rangeDoun && weight < rangeUp) {
@@ -95,12 +96,12 @@ abstract class Operations {
             return false;
         }
     }
+
     public static int generateClarity() {
         int a = (int)(Math.random()*12)+1;
         return a;
     }
 
-    //Выводит в консоль все элементы ArrayList
     public static void showArray(ArrayList<Gem> gemsArray) {
         for (Gem obj:gemsArray) {
             System.out.println(obj.toString());

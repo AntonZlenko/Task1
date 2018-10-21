@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class GemRunner {
     public static void main(String[] args) {
         ArrayList<Gem> dataBase = new ArrayList<Gem>();
-        //Создаем базу данных из 1000 камней
         for (int i = 0; i < 1000; i++) {
 
             Diamond obj = new Diamond(Operations.generateWeight(), Operations.generateClarity());
@@ -25,13 +24,13 @@ public class GemRunner {
         necklace = Operations.Selections(dataBase);
         Operations.showArray(necklace);
 
-        Operations.getWeightAndPriceNechlace(necklace);
+        Operations.getWeightAndPriceNecklace(necklace);
 
         Operations.sortByPrice(necklace);
 
         Operations.showArray(necklace);
 
-        Operations.showGemsInRanges(necklace,1,3);
+        Operations.showGemsInRanges(necklace,1,5);
 
     }
 }
